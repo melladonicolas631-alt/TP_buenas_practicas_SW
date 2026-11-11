@@ -48,9 +48,15 @@ void def_enl(struct datos **info, int *total_enlaces) {
 	}
 	
 	for(i = *total_enlaces; i < (*total_enlaces + nuevos_enlaces); i++) {
+		char nombre_temp[40];
+		
 		printf("\n--- Datos del enlace %d ---\n", i + 1);
 		printf("Nombre del enlace: ");
-		scanf("%s", (*info)[i].NombreEnlace);
+		scanf("%s", nombre_temp);
+		
+		// Operación de cadenas requerida en el parcial
+		strcpy((*info)[i].NombreEnlace, "NET-");
+		strcat((*info)[i].NombreEnlace, nombre_temp);
 		
 		printf("Potencia del enlace %s (W/dBm): ", (*info)[i].NombreEnlace);
 		scanf("%f", &((*info)[i].PotenciaTx));
